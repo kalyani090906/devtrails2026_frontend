@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { ToastProvider } from "./components/ui/Toast";
 import Onboarding from "./components/Onboarding";
 import Dashboard from "./components/Dashboard";
+import { loadState } from "./utils/storage";
 
 export default function App() {
-  const [rider, setRider] = useState(null);
+  const saved = loadState();
+  const [rider, setRider] = useState(saved?.rider || null);
+
   return (
     <ToastProvider>
       {!rider
